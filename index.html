@@ -48,7 +48,7 @@
             <div id="title2" class="text-large">Contactează-mă</div>
             <hr>
             <form>
-                <label>Nume și prenume<input type="text" pattern="[a-zA-Z\s-]{3,100}" id="name" required></label>
+                <label>Nume și prenume<input type="text" id="name" pattern="[a-zA-Z\s-]{3,}" required></label>
                 <label>E-mail<input type="text" id="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" required></label>
                 <div class="flex">
                     <input type="radio" class="inline" id="radio1" name="pers" required>
@@ -58,7 +58,7 @@
                     <input type="radio" class="inline" id="radio2" name="pers" required>
                     <span>Persoană juridică</span> 
                 </div>
-                <label>Mesaj<textarea id="message" required></textarea></label>
+                <label>Mesaj<textarea id="message" minlength="10" required></textarea></label>
                 <button type="submit" class="text-white" id="button">Trimite</button>
             </form>
         </div>

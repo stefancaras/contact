@@ -38,6 +38,8 @@ button.addEventListener('click', function(){
         name.addEventListener('keyup', function(){
             if (name.checkValidity()) {
                 name.classList.remove("invalid");
+            } else {
+                name.classList.add("invalid");
             }
         })
         
@@ -47,6 +49,8 @@ button.addEventListener('click', function(){
         email.addEventListener('keyup', function(){
             if (email.checkValidity()) {
                 email.classList.remove("invalid");
+            } else {
+                email.classList.add("invalid");
             }
         })
         
@@ -69,6 +73,8 @@ button.addEventListener('click', function(){
         message.addEventListener('keyup', function(){
             if (message.checkValidity()) {
                 message.classList.remove("invalid");
+            } else {
+                message.classList.add("invalid");
             }
         })
     }
