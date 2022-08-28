@@ -6,6 +6,7 @@ let message = document.getElementById('message');
 let button = document.getElementById('button');
 let thanks = document.getElementById('thanks');
 let namearr = [];
+
 button.addEventListener('click', function(){
     if (name.checkValidity() && email.checkValidity() && 
     message.checkValidity() && (radio1.checked || radio2.checked)) {
@@ -17,6 +18,7 @@ button.addEventListener('click', function(){
             console.log(`Persoană juridică`);
         }
         console.log(`Mesaj: ${message.value}`);
+
         namearr = name.value.split(" ");
         name.value=email.value=message.value="";
         radio1.checked=radio2.checked=false;
@@ -33,15 +35,19 @@ button.addEventListener('click', function(){
         if (name.checkValidity() == false) {
                 name.classList.add("invalid");
         }
-        name.addEventListener('keydown', function(){
+        name.addEventListener('keyup', function(){
+            if (name.checkValidity()) {
                 name.classList.remove("invalid");
+            }
         })
         
         if (email.checkValidity() == false) {
                 email.classList.add("invalid");
         }
-        email.addEventListener('keydown', function(){
-            email.classList.remove("invalid");
+        email.addEventListener('keyup', function(){
+            if (email.checkValidity()) {
+                email.classList.remove("invalid");
+            }
         })
         
         if (!radio1.checked && !radio2.checked) {
@@ -60,8 +66,10 @@ button.addEventListener('click', function(){
         if (message.checkValidity() == false) {
                 message.classList.add("invalid");
         }
-        message.addEventListener('keydown', function(){
-            message.classList.remove("invalid");
+        message.addEventListener('keyup', function(){
+            if (message.checkValidity()) {
+                message.classList.remove("invalid");
+            }
         })
     }
 })
