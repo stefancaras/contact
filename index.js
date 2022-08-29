@@ -5,7 +5,6 @@ let radio2 = document.getElementById('radio2');
 let message = document.getElementById('message');
 let button = document.getElementById('button');
 let thanks = document.getElementById('thanks');
-let namearr = [];
 
 button.addEventListener('click', function(){
     if (name.checkValidity() && email.checkValidity() && 
@@ -19,12 +18,14 @@ button.addEventListener('click', function(){
         }
         console.log(`Mesaj: ${message.value}`);
 
-        namearr = name.value.split(" ");
+        let namearray = name.value.split(" ");
         name.value=email.value=message.value="";
         radio1.checked=radio2.checked=false;
         thanks.classList.add("green");
-        thanks.innerHTML = `<i class="fas fa-check"></i>Informațiile tale au fost trimise.<br>
-            Mulțumesc, ${namearr[namearr.length-1]}. <i class="fas fa-window-close" id="x"></i>`;
+        thanks.innerHTML = `<i class="fas fa-check"></i>
+            Informațiile tale au fost trimise.<br>
+            Mulțumesc, ${namearray[namearray.length-1]}. 
+            <i class="fas fa-window-close" id="x"></i>`;
         
         let x = document.getElementById('x');
         x.addEventListener('click', function(){
@@ -32,27 +33,17 @@ button.addEventListener('click', function(){
             thanks.classList.remove("green");
         })
     } else {
-        if (name.checkValidity() == false) {
-                name.classList.add("invalid");
-        }
-        name.addEventListener('keyup', function(){
-            if (name.checkValidity()) {
-                name.classList.remove("invalid");
-            } else {
-                name.classList.add("invalid");
+        const elemArray = [name, email, message];
+        for (let elem of elemArray) {
+            if (elem.checkValidity() == false) {
+                elem.classList.add("invalid");
             }
-        })
-        
-        if (email.checkValidity() == false) {
-                email.classList.add("invalid");
+            elem.addEventListener('keyup', function(){
+                if (elem.checkValidity()) {
+                    elem.classList.remove("invalid");
+                }
+            })
         }
-        email.addEventListener('keyup', function(){
-            if (email.checkValidity()) {
-                email.classList.remove("invalid");
-            } else {
-                email.classList.add("invalid");
-            }
-        })
         
         if (!radio1.checked && !radio2.checked) {
             radio1.classList.add("invalid");
@@ -66,17 +57,5 @@ button.addEventListener('click', function(){
             radio1.classList.remove("invalid");
             radio2.classList.remove("invalid");
         })
-        
-        if (message.checkValidity() == false) {
-                message.classList.add("invalid");
-        }
-        message.addEventListener('keyup', function(){
-            if (message.checkValidity()) {
-                message.classList.remove("invalid");
-            } else {
-                message.classList.add("invalid");
-            }
-        })
     }
 })
-
