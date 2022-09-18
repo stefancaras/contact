@@ -19,6 +19,7 @@ button.addEventListener('click', function(){
         }
         console.log(`Mesaj: ${message.value}`);
         let namearray = contactName.value.split(" ");
+        //Stop validating, everything is OK
         document.querySelector("form").noValidate = true;
         //Clear input fields
         contactName.value=email.value=message.value="";
@@ -38,8 +39,9 @@ button.addEventListener('click', function(){
         ;
     //If something is wrong
     } else {
-        //Check what is wrong and add class invalid to elements
+        //Start validating
         document.querySelector("form").noValidate = false;
+        //Check what is wrong and add class invalid to elements
         const elemArray = [contactName, email, message];
         for (let elem of elemArray) {
             if (elem.checkValidity() === false) {
