@@ -19,6 +19,7 @@ button.addEventListener('click', function(){
         }
         console.log(`Mesaj: ${message.value}`);
         let namearray = contactName.value.split(" ");
+        document.querySelector("form").noValidate = true;
         //Clear input fields
         contactName.value=email.value=message.value="";
         radio1.checked=radio2.checked=false;
@@ -34,9 +35,11 @@ button.addEventListener('click', function(){
             thanks.innerHTML = "";
             thanks.classList.remove("green");
         })
+        ;
     //If something is wrong
     } else {
         //Check what is wrong and add class invalid to elements
+        document.querySelector("form").noValidate = false;
         const elemArray = [contactName, email, message];
         for (let elem of elemArray) {
             if (elem.checkValidity() === false) {
